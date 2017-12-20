@@ -1,4 +1,4 @@
-import app from '../example/devServer.js'
+import app from '../sandbox/testServer.js'
 import { launch } from 'puppeteer'
 import { toMatchImageSnapshot } from 'jest-image-snapshot'
 
@@ -71,7 +71,7 @@ describe('example page', () => {
   })
 
   it('should match screenshot', async () => {
-    await page.goto(`http://localhost:${PORT}`)
+    await page.goto(`http://localhost:${PORT}/css`)
     await page.addStyleTag({ content: globalCss })
     const screenshot = await page.screenshot({ fullPage: true })
     expect(screenshot).toMatchImageSnapshot({
