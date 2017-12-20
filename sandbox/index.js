@@ -4,7 +4,6 @@ const path = require('path')
 const express = require('express')
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpack = require('webpack')
-
 const { CONFIG, logger } = require('./util')
 const webpackConfig = require('./webpack.config.dev')
 const livereloadMiddleware = require('./livereload/middleware')
@@ -15,7 +14,7 @@ const devMiddleware = webpackDevMiddleware(compiler, webpackConfig.devServer)
 
 const indexHtml = fs.readFileSync(
   path.resolve(__dirname, './public/index.html'),
-  'utf-8' // eslint-disable-line comma-dangle
+  'utf-8', // eslint-disable-line comma-dangle
 )
 
 const app = express()
@@ -30,7 +29,7 @@ app.get('*', (req, res) => {
   // We use webpackDevMiddleware in-memory file system to read server script after compilation
   const serverScript = devMiddleware.fileSystem.readFileSync(
     path.join(webpackConfig.output.path, 'server.js'),
-    'utf-8' // eslint-disable-line comma-dangle
+    'utf-8', // eslint-disable-line comma-dangle
   )
 
   // Then we evaluate this script to get prerendered content
@@ -52,7 +51,9 @@ server.listen(CONFIG.PORT, CONFIG.HOST, err => {
     logger.err(err)
   } else {
     logger.info(
-      `Listening on port ${CONFIG.PORT}. Open up http://${CONFIG.HOST}:${CONFIG.PORT}/ in your browser.` // eslint-disable-line comma-dangle
+      `Listening on port ${CONFIG.PORT}. Open up http://${CONFIG.HOST}:${
+        CONFIG.PORT
+      }/ in your browser.`, // eslint-disable-line comma-dangle
     )
   }
 })

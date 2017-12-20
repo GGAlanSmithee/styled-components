@@ -65,7 +65,11 @@ const Heading = styled.div`
   text-align: center;
 `
 
-const Title = styled.h1`@media (max-width: 40.625em) {font-size: 26px;}`
+const Title = styled.h1`
+  @media (max-width: 40.625em) {
+    font-size: 26px;
+  }
+`
 
 const Subtitle = styled.p``
 
@@ -128,7 +132,7 @@ const LiveError = styled(_LiveError)`
   padding: 0.5rem;
 `
 
-const App = () => (
+const Sandbox = () => (
   <Body>
     <Heading>
       <Title>
@@ -149,4 +153,4 @@ const App = () => (
   </Body>
 )
 
-export default App
+export default Sandbox
